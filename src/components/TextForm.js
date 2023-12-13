@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import QRCode from "react-qr-code";
 
 export default function TextForm(props) {
 
@@ -13,12 +14,6 @@ export default function TextForm(props) {
         props.showAlert('Converted to Lowercase!', 'success');
     };
 
-    const handleToSpeak = () => {
-        let newText = new SpeechSynthesisUtterance();
-        newText.text = text;
-        window.speechSynthesis.speak(newText);
-        // setText(newText);
-    };
     const handleClean = () => {
         let newText = "";
         setText(newText);
@@ -71,6 +66,12 @@ export default function TextForm(props) {
         props.showAlert('Copied to Clipboard!', 'success');
     };
 
+    const [qrValue, setQRValue] = useState('');
+    const generateQR = () => {
+        setQRValue(text);
+    };
+
+
     const [text, setText] = useState('');
     return (
         <>
@@ -81,7 +82,7 @@ export default function TextForm(props) {
                         <div className="mb-3">
                             <textarea className="form-control" value={text} onChange={handleOnChange} id="text-convert" rows="9" style={{
                                 color: props.mode === 'light' ? 'black' : 'white',
-                                backgroundColor: props.mode === 'light' ? 'white' : '#180449'
+                                backgroundColor: props.bgColor
                             }}></textarea>
                         </div>
                         <p>{text.split(" ").length} words and {text.length} characters </p>
@@ -91,15 +92,19 @@ export default function TextForm(props) {
                         <button className="btn btn-primary mx-2" onClick={handleCapitalizeWordClick}>Capitalize Word</button>
                         <button className="btn btn-primary mx-2" onClick={handleExtraSpace}>Remove Extra Space</button>
                         <button className="btn btn-primary mx-2" onClick={handleCopyText}>Copy Text</button>
-                        <button className="btn btn-primary mx-2" onClick={handleToSpeak}>Listen</button>
+                        <button className="btn btn-primary mx-2" onClick={generateQR}>Generate QR</button>
                         <button className="btn btn-primary mx-2" onClick={handleClean}>Clear</button>
                     </div>
                 </div>
-                <div className="container">
-                    <h2>Your Text Preview</h2>
-                    <p>{0.01 * text.split(" ").length} Minutes to read</p>
-                    <p>{text.length > 0 ? text : 'Enter Your Text To Preview.'}</p>
-
+                <div className="container d-flex justify-content-between">
+                    <div className="text">
+                        <h2>Your Text Preview</h2>
+                        <p>{0.01 * text.split(" ").length} Minutes to read</p>
+                        <p>{text.length > 0 ? text : 'Enter Your Text To Preview.'}</p>
+                    </div>
+                    <div className="qrCode mx-10" style={{ display: qrValue === '' ? 'none' : 'block' }}>
+                        <QRCode value={qrValue} />
+                    </div>
                 </div>
             </div >
         </>

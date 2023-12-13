@@ -5,11 +5,11 @@ import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
-import About from './components/About';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   const [mode, setMode] = useState('light');
   const [alert, setAlert] = useState(null);
+  const [bgColor, setBgColor] = useState("#ffffff");
+  const [textAreaBg, setTextAreaBg] = useState("#ffffff");
 
   const showAlert = (message, type) => {
     setAlert({
@@ -25,6 +25,9 @@ function App() {
   const colorChannels = () => {
 
     const colorInput = document.getElementById('ColorInput');
+
+    setBgColor(colorInput.value);
+    setTextAreaBg(colorInput.value);
     document.body.style.backgroundColor = colorInput.value;
 
   }
@@ -33,7 +36,10 @@ function App() {
 
     if (mode === 'light') {
       setMode('dark');
-      document.body.style.backgroundColor = '#180449';
+      setBgColor('#180449');
+
+      setTextAreaBg('#180449');
+
       showAlert('Dark Mode is enabled', 'success');
       setTimeout(() => {
         document.title = 'Text Modification';
@@ -42,7 +48,9 @@ function App() {
     }
     else {
       setMode('light');
-      document.body.style.backgroundColor = 'white';
+      setBgColor('#ffffff');
+      setTextAreaBg('#ffffff');
+
       showAlert('Light Mode is enabled', 'success');
       setTimeout(() => {
         document.title = 'Text Modification';
@@ -51,22 +59,16 @@ function App() {
     }
 
   }
+  document.body.style.backgroundColor = bgColor;
 
   return (
 
     <>
-      <Router>
-        <Navbar title='Text Modification' mode={mode} toggleMode={toggleMode} colorChannels={colorChannels} />
 
-        <Alert alert={alert} />
+      <Navbar title='Text Modification' mode={mode} toggleMode={toggleMode} colorChannels={colorChannels} />
 
-        <Routes>
-          <Route path='/' element={<TextForm heading='Enter the text to analyze below' mode={mode} showAlert={showAlert} />} />
-
-          <Route path='/about' element={<About mode={mode} />} />
-
-        </Routes>
-      </Router>
+      <Alert alert={alert} />
+      <TextForm heading='Enter the text to analyze below' mode={mode} showAlert={showAlert} bgColor={textAreaBg} />
 
     </>
   );
