@@ -86,24 +86,24 @@ export default function TextForm(props) {
                             }}></textarea>
                         </div>
                         <p>{text.split(" ").length} words and {text.length} characters </p>
-                        <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
-                        <button className="btn btn-primary mx-2" onClick={handleLoClick}>Convert to Lowercase</button>
-                        <button className="btn btn-primary mx-2" onClick={handleSentenceCaseClick}>Sentence Case Click</button>
-                        <button className="btn btn-primary mx-2" onClick={handleCapitalizeWordClick}>Capitalize Word</button>
-                        <button className="btn btn-primary mx-2" onClick={handleExtraSpace}>Remove Extra Space</button>
-                        <button className="btn btn-primary mx-2" onClick={handleCopyText}>Copy Text</button>
-                        <button className="btn btn-primary mx-2" onClick={generateQR}>Generate QR</button>
-                        <button className="btn btn-primary mx-2" onClick={handleClean}>Clear</button>
+                        <button className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>Convert to Uppercase</button>
+                        <button className="btn btn-primary mx-2 my-2" onClick={handleLoClick}>Convert to Lowercase</button>
+                        <button className="btn btn-primary mx-2 my-2" onClick={handleSentenceCaseClick}>Sentence Case Click</button>
+                        <button className="btn btn-primary mx-2 my-2" onClick={handleCapitalizeWordClick}>Capitalize Word</button>
+                        <button className="btn btn-primary mx-2 my-2" onClick={handleExtraSpace}>Remove Extra Space</button>
+                        <button className="btn btn-primary mx-2 my-2" onClick={handleCopyText}>Copy Text</button>
+                        <button className="btn btn-primary mx-2 my-2" onClick={generateQR}>Generate QR</button>
+                        <button className="btn btn-primary mx-2 my-2" onClick={handleClean}>Clear</button>
                     </div>
                 </div>
-                <div className="container d-flex justify-content-between">
+                <div className="container d-flex justify-content-between p-3">
                     <div className="text">
                         <h2>Your Text Preview</h2>
                         <p>{0.01 * text.split(" ").length} Minutes to read</p>
                         <p>{text.length > 0 ? text : 'Enter Your Text To Preview.'}</p>
                     </div>
-                    <div className="qrCode mx-10" style={{ display: qrValue === '' ? 'none' : 'block' }}>
-                        <QRCode value={qrValue} />
+                    <div className="qrCode mx-3  my-3" style={{ display: qrValue === '' ? 'none' : 'block' }}>
+                        <QRCode className="qrCode mx-10" value={qrValue} />
                     </div>
                 </div>
             </div >
