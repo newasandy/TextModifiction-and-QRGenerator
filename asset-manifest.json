@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TextModifiction-and-QRGenerator/static/css/main.073c9b0a.css",
+    "main.js": "/TextModifiction-and-QRGenerator/static/js/main.21731e0f.js",
+    "static/js/787.28cb0dcd.chunk.js": "/TextModifiction-and-QRGenerator/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/TextModifiction-and-QRGenerator/index.html",
+    "main.073c9b0a.css.map": "/TextModifiction-and-QRGenerator/static/css/main.073c9b0a.css.map",
+    "main.21731e0f.js.map": "/TextModifiction-and-QRGenerator/static/js/main.21731e0f.js.map",
+    "787.28cb0dcd.chunk.js.map": "/TextModifiction-and-QRGenerator/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.21731e0f.js"
+  ]
+}
